@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class profileController {
+public class ProfileController {
     @GetMapping("/names")
     public String getProfile(
             @RequestParam(name = "name") String name,
