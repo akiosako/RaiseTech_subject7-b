@@ -21,16 +21,35 @@
 <br>
 
 ## バリデーションについて調べ名前が空文字、null、20文字以上以上の場合はエラーとする  
-### バリデーション = 入力チェックのこと  
+(バリデーション = 入力チェックのこと)  
 
-## gradleの場合
+### やったこと  
+### build.gradleに依存関係を追加
 ```
 dependencies {
   ...
   implementation 'org.springframework.boot:spring-boot-starter-validation'
 } 
-```  
-を依存関係に追加。
+```    
+これでValidationに関するアノテーションが使えるようになる。  
+
+- その後の流れ  
+任意のPOSTリクエストを作成（今回は名前を登録するPOSTリクエストをコピペ使用）  
+CreateFormクラスのバリデーションしたいフィールドにアノテーションを追加  
+
+|アノテーション|内容|  
+|:---:|:---:|  
+|@NotNull|nullでない。（空文字列やスペース、タブのみは許可する）|  
+|@NotEmpty|空でない。（nullと空文字列は不許可、スペースやタブのみのみは許可）|  
+|@NotBlank|空白でない。（null、空文字列、スペースやタブのみだと不許可）|  
+|@Size(min, max)	|要素数の範囲を指定。Stringなら文字数、ListやMapなら要素数。|  
+|@Max, @Min|数値の上限と下限を指定。|  
+|@Email|メールアドレスとして妥当かチェックする。|  
+|@Pattern(regex)	|指定した正規表現に一致するかチェックする|  
+|@AssertTrue|Trueであることをチェックする。|  
+
+さらに詳細 → https://penguinlabo.hatenablog.com/entry/springframework/validator
+
 
 
 
