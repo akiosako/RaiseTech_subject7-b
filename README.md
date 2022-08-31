@@ -34,8 +34,10 @@ dependencies {
 これでValidationに関するアノテーションが使えるようになる。  
 
 - その後の流れ  
-任意のPOSTリクエストを作成（今回は名前を登録するPOSTリクエストをコピペ使用）  
-CreateFormクラスのバリデーションしたいフィールドにアノテーションを追加  
+1.任意のPOSTリクエストを作成（今回は名前を登録するPOSTリクエストをコピペ使用）  
+2.CreateFormクラスのバリデーションしたいフィールドにアノテーションを追加  
+3.Controllerクラスに@Validated、メソッドの引数であるCreateFormの前に@Validを付与、  
+@Validを付与した引数のすぐ後ろにBindingResultを書く。
 
 |アノテーション|内容|  
 |:---:|:---:|  
