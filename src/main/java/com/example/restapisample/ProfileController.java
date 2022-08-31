@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ProfileController {
-    @GetMapping("/names")
+    @GetMapping("/profile")
     public String getProfile(
             @RequestParam(name = "name") String name,
             @RequestParam(name = "DOB") String DOB) { // DOB : day of birth 生年月日
