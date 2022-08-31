@@ -1,17 +1,36 @@
 package com.example.restapisample;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.validation.Valid;
+import java.net.URI;
+
+@Validated
 @RestController
 public class ProfileController {
     @GetMapping("/profile")
     public String getProfile(
             @RequestParam(name = "name") String name,
-            @RequestParam(name = "DOB") String DOB) { // DOB : day of birth 生年月日
-        return "name:" + name + " " + "DOB:" + DOB;
+            @RequestParam(name = "day_of_birth") String day_of_birth) {
+        return "name:" + name + " " + "day_of_birth:" + day_of_birth;
     }
 
+    @PostMapping("/names")
+    public ResponseEntity<String> create(@RequestBody @Valid CreateForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return create(form, bindingResult);
+        }
+        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+                .path("/names/id")
+                .build()
+                .toUri();
+        return ResponseEntity.created(url).body("name successfully created");
+    }
 }
+
+
 
