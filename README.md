@@ -49,8 +49,8 @@ dependencies {
 |@Email|メールアドレスとして妥当かチェックする。|  
 |@Pattern(regex)	|指定した正規表現に一致するかチェックする|  
 |@AssertTrue|Trueであることをチェックする。|  
-
-さらに詳細 → https://penguinlabo.hatenablog.com/entry/springframework/validator
+参考にしたサイト：https://www.tsuchiya.blog/spring-boot-step4/
+アノテーションさらに詳細 → https://penguinlabo.hatenablog.com/entry/springframework/validator
 
 
 
