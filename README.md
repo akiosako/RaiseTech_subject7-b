@@ -18,6 +18,20 @@
 <img width="641" alt="スクリーンショット 2022-08-31 174405" src="https://user-images.githubusercontent.com/107123973/187672384-3fe8d555-93b5-4281-af33-d8e42f7280e7.png">  
 
 ## 200番(リクエスト成功) name:aki DOB:1984/04/13を確認  
+<br>
+
+## バリデーションについて調べ名前が空文字、null、20文字以上以上の場合はエラーとする  
+### バリデーション = 入力チェックのこと  
+
+## gradleの場合
+```
+dependencies {
+  ...
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+} 
+```  
+を依存関係に追加。
+
 
 
 
