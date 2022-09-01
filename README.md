@@ -43,7 +43,25 @@ dependencies {
 
 ### バリデーション結果を格納：@BindingResult    
 @BindingResultはメソッド引数として直前のフォームオブジェクトのバリデーション結果を格納する。  
-@BindingResultはメソッドの引数の並び順をバリデーション対象の直後にすることが必須なので注意してください。
+@BindingResultはメソッドの引数の並び順をバリデーション対象の直後にすることが必須なので注意。  
+bindeingresultに入力チェックの結果が格納される。hasErrors()メソッドは入力チェックに引っかかったかどうかの確認を行うメソッドであり、入力チェックに引っかかったら元のページを表示し、そうでない場合は結果表示を行う。
+
+```
+@PostMapping("/names")
+    public ResponseEntity<String> create(@RequestBody @Valid CreateForm form, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+
+            return;
+        }
+        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+                .path("/names/id")
+                .build()
+                .toUri();
+        return ResponseEntity.created(url).body("name successfully created");
+    }
+}
+```
+
 
 |アノテーション|内容|  
 |:---:|:---:|  
