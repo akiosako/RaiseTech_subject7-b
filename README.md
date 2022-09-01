@@ -110,4 +110,3 @@ ResponseEntityの戻り値がないため、BindingResultのifでうまくキャ
 参考にしたサイト：https://www.tsuchiya.blog/spring-boot-step4/  
 アノテーションさらに詳細 → https://penguinlabo.hatenablog.com/entry/springframework/validator
 
-
