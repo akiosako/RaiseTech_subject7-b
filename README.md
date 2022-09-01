@@ -37,14 +37,14 @@ dependencies {
 1.任意のPOSTリクエストを作成（今回は名前を登録するPOSTリクエストをコピペ使用）  
 2.CreateFormクラスのバリデーションしたいフィールドにアノテーションを追加  
 3.Controllerクラスに@Validated、メソッドの引数であるCreateFormの前に@Validを付与、  
-~~@Validを付与した引数のすぐ後ろに**BindingResult**を書く。  
+~~@Validを付与した引数のすぐ後ろに**BindingResult**を書く。~~  
 
 <br>  
 
 ~~### バリデーション結果を格納：@BindingResult    
 @BindingResultはメソッド引数として直前のフォームオブジェクトのバリデーション結果を格納する。  
 @BindingResultはメソッドの引数の並び順をバリデーション対象の直後にすることが必須なので注意。  
-bindeingresultに入力チェックの結果が格納される。hasErrors()メソッドは入力チェックに引っかかったかどうかの確認を行うメソッドであり、入力チェックに引っかかったら元のページを表示し、そうでない場合は結果表示を行う。
+bindeingresultに入力チェックの結果が格納される。hasErrors()メソッドは入力チェックに引っかかったかどうかの確認を行うメソッドであり、入力チェックに引っかかったら元のページを表示し、そうでない場合は結果表示を行う。~~
 
 ```
 @PostMapping("/names")
@@ -106,7 +106,8 @@ ResponseEntityの戻り値がないため、BindingResultのifでうまくキャ
 |@Pattern(regex)	|指定した正規表現に一致するかチェックする|  
 |@AssertTrue|Trueであることをチェックする。|   
 
-参考にしたサイト：https://www.tsuchiya.blog/spring-boot-step4/
+
+参考にしたサイト：https://www.tsuchiya.blog/spring-boot-step4/  
 アノテーションさらに詳細 → https://penguinlabo.hatenablog.com/entry/springframework/validator
 
 
