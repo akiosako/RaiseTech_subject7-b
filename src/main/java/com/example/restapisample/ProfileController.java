@@ -16,6 +16,7 @@ public class ProfileController {
             @RequestParam(name = "name") String name,
             @RequestParam(name = "dayOfBirth") String dayOfBirth) {
         return "name:" + name + " " + "dayOfBirth:" + dayOfBirth;
+
     }
 
     @PostMapping("/names")
