@@ -37,7 +37,13 @@ dependencies {
 1.任意のPOSTリクエストを作成（今回は名前を登録するPOSTリクエストをコピペ使用）  
 2.CreateFormクラスのバリデーションしたいフィールドにアノテーションを追加  
 3.Controllerクラスに@Validated、メソッドの引数であるCreateFormの前に@Validを付与、  
-@Validを付与した引数のすぐ後ろにBindingResultを書く。
+@Validを付与した引数のすぐ後ろに**BindingResult**を書く。  
+
+<br>  
+
+### バリデーション結果を格納：@BindingResult    
+@BindingResultはメソッド引数として直前のフォームオブジェクトのバリデーション結果を格納する。  
+@BindingResultはメソッドの引数の並び順をバリデーション対象の直後にすることが必須なので注意してください。
 
 |アノテーション|内容|  
 |:---:|:---:|  
@@ -48,7 +54,8 @@ dependencies {
 |@Max, @Min|数値の上限と下限を指定。|  
 |@Email|メールアドレスとして妥当かチェックする。|  
 |@Pattern(regex)	|指定した正規表現に一致するかチェックする|  
-|@AssertTrue|Trueであることをチェックする。|  
+|@AssertTrue|Trueであることをチェックする。|   
+
 参考にしたサイト：https://www.tsuchiya.blog/spring-boot-step4/
 アノテーションさらに詳細 → https://penguinlabo.hatenablog.com/entry/springframework/validator
 
