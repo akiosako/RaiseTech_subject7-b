@@ -37,11 +37,11 @@ dependencies {
 1.任意のPOSTリクエストを作成（今回は名前を登録するPOSTリクエストをコピペ使用）  
 2.CreateFormクラスのバリデーションしたいフィールドにアノテーションを追加  
 3.Controllerクラスに@Validated、メソッドの引数であるCreateFormの前に@Validを付与、  
-@Validを付与した引数のすぐ後ろに**BindingResult**を書く。  
+~~@Validを付与した引数のすぐ後ろに**BindingResult**を書く。  
 
 <br>  
 
-### バリデーション結果を格納：@BindingResult    
+~~### バリデーション結果を格納：@BindingResult    
 @BindingResultはメソッド引数として直前のフォームオブジェクトのバリデーション結果を格納する。  
 @BindingResultはメソッドの引数の並び順をバリデーション対象の直後にすることが必須なので注意。  
 bindeingresultに入力チェックの結果が格納される。hasErrors()メソッドは入力チェックに引っかかったかどうかの確認を行うメソッドであり、入力チェックに引っかかったら元のページを表示し、そうでない場合は結果表示を行う。
@@ -61,7 +61,39 @@ bindeingresultに入力チェックの結果が格納される。hasErrors()メ�
     }
 }
 ```
+# 上記削除しコードを変更  
+参考にしたサイト:SpringBootで作成したREST APIのリクエストに対するバリデーションアノテーションの付け方 https://qiita.com/MrMs/items/19ea03b069c226c323bc  
+```
+ @PostMapping("/names")
+    public ResponseEntity<String> create(@RequestBody @Valid CreateForm form) {
+        URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
+                .path("/names/id")
+                .build()
+                .toUri();
+        return ResponseEntity.created(url).body("name successfully created");
+    }
+}
+```
+- BindingResultを消す  
+ResponseEntityの戻り値がないため、BindingResultのifでうまくキャッチできなかった。
+これでも動作しました。  
+### 実行結果   
+正常に動作（POSTリクエスト成功：201　name successfully createdが返ってくる)  
+<img width="453" alt="スクリーンショット 2022-09-01 102619" src="https://user-images.githubusercontent.com/107123973/187815836-616c9d87-25b1-497f-92a6-6ad8a4235e3f.png">
+<img width="668" alt="スクリーンショット 2022-09-01 103214" src="https://user-images.githubusercontent.com/107123973/187815869-a7f09762-c190-4357-b422-2c340cb5fe31.png">
+   
+### Vaidation
+1.nullの場合  
+<img width="449" alt="スクリーンショット 2022-09-01 103036" src="https://user-images.githubusercontent.com/107123973/187814440-cfab2ff7-0d7c-4057-81d2-109ad8569c13.png">
+<img width="653" alt="スクリーンショット 2022-09-01 103527" src="https://user-images.githubusercontent.com/107123973/187814468-12eb0b79-b350-46fe-9ce4-5549a13fc05a.png">    
+2.空文字の場合  
+<img width="455" alt="スクリーンショット 2022-09-01 102806" src="https://user-images.githubusercontent.com/107123973/187815544-360b847f-ecf0-438d-aa42-8f1d5a3204df.png">
+<img width="659" alt="スクリーンショット 2022-09-01 103410" src="https://user-images.githubusercontent.com/107123973/187815426-ab95418a-ff9d-48f7-94de-f6aa200e2bf3.png">
 
+
+3.20文字以上の場合  
+<img width="448" alt="スクリーンショット 2022-09-01 102721" src="https://user-images.githubusercontent.com/107123973/187814878-ece0495f-bc2c-4cf3-9e95-a5f6da5a3a14.png">
+<img width="656" alt="スクリーンショット 2022-09-01 103458" src="https://user-images.githubusercontent.com/107123973/187814940-c08ec4ab-d9c2-4367-9bd5-7a97f99fd68c.png">
 
 |アノテーション|内容|  
 |:---:|:---:|  
