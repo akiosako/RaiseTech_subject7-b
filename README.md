@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 # RaiseTech_subject7-b
-# RaiseTech_subject7-c
 =======
 # 第7回追加課題　REST API  
 ## 名前以外にも生年月日を受け取れるようにする  
