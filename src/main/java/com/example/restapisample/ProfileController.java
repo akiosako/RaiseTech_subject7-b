@@ -1,7 +1,6 @@
 package com.example.restapisample;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -28,5 +27,6 @@ public class ProfileController {
         return ResponseEntity.created(url).body("name successfully created");
     }
 }
+
 
 
