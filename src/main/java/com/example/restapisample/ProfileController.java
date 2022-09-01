@@ -14,8 +14,13 @@ public class ProfileController {
     @GetMapping("/profile")
     public String getProfile(
             @RequestParam(name = "name") String name,
+<<<<<<< HEAD
             @RequestParam(name = "dayOfBirth") String dayOfBirth) {
         return "name:" + name + " " + "dayOfBirth:" + dayOfBirth;
+=======
+            @RequestParam(name = "day_of_birth") String dayOfBirth) {
+        return "name:" + name + " " + "day_of_birth:" + day_of_birth;
+>>>>>>> d7ba7e0498078dbe6b74a816000129debbced975
     }
 
     @PostMapping("/names")
