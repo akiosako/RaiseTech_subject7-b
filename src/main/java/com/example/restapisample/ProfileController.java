@@ -20,10 +20,7 @@ public class ProfileController {
     }
 
     @PostMapping("/names")
-    public ResponseEntity<String> create(@RequestBody @Valid CreateForm form, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return create(form, bindingResult);
-        }
+    public ResponseEntity<String> create(@RequestBody @Valid CreateForm form) {
         URI url = UriComponentsBuilder.fromUriString("http://localhost:8080")
                 .path("/names/id")
                 .build()
@@ -31,6 +28,5 @@ public class ProfileController {
         return ResponseEntity.created(url).body("name successfully created");
     }
 }
-
 
 
