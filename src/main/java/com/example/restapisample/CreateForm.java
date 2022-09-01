@@ -12,8 +12,6 @@ import javax.validation.constraints.Size;
 @Setter
 public class CreateForm {
     @NotEmpty(message = "入力してください。")
-    @NotNull
-    @NotBlank
     @Size(max = 20)
     private String name;
 
